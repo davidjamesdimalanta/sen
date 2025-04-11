@@ -70,6 +70,8 @@ module.exports = {
           'color': 'transparent',
           'background-clip': 'text',
           '-webkit-background-clip': 'text',
+          'display': 'inline-block',
+          '-webkit-text-fill-color': 'transparent',
         },
       });
     },

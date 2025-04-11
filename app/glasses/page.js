@@ -44,9 +44,12 @@ export default function GlassesPage() {
             height: '100vh',
             transform: `scale(${videoScale})`,
             transition: 'transform 0.1s ease-out',
-            zIndex: 10
+            zIndex: 10,
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/graphics/mockupglasses.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
           }}
-          className="flex items-center justify-center bg-gradient-to-b from-[#5728A5] to-[#1e1e1e] px-4 sm:px-6 md:px-8"
+          className="flex items-center justify-center px-4 sm:px-6 md:px-8"
         >
           <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center relative">
             {/* Hero Content */}
@@ -57,43 +60,6 @@ export default function GlassesPage() {
               </p>
             </div>
             
-            {/* Main Product Visual - Could be a video or image */}
-            <div 
-              className="relative w-full max-w-3xl aspect-video mb-8 md:mb-12 px-4 sm:px-8 md:px-12"
-              style={{ opacity: videoOpacity }}
-            >
-              <video 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-                className="w-full h-full object-cover rounded-xl"
-              >
-                <source src="/videos/glasses-hero.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-              
-              {/* Fallback Image if Video Not Available */}
-              <div className="absolute inset-0 flex items-center justify-center" style={{ opacity: videoOpacity < 0.5 ? 1 : 0 }}>
-                <Image
-                  src="/graphics/contact-lens.png" 
-                  alt="SEN Glasses"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto rounded-xl"
-                  priority
-                />
-              </div>
-              
-              {/* Overlay ChatBubble */}
-              <div className="absolute top-0 left-0 w-full h-full">
-                <ChatBubble 
-                  position="bottom-right" 
-                  text="Social context recognized: Business meeting. Adjusting conversational suggestions to maximize impression metrics." 
-                  zIndex="z-30"
-                />
-              </div>
-            </div>
             
             {/* CTA Button */}
             <div style={{ opacity: Math.max(0, 1 - scrollPosition / 400) }}>
@@ -112,7 +78,7 @@ export default function GlassesPage() {
       <section className="bg-[#1e1e1e] py-16 md:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
-            <div className="md:w-1/2">
+            <div className="w-full">
               <h2 className="text-3xl md:text-5xl font-light mb-4 md:mb-6">
                 The Frame of <span className="text-[#02A9F7] font-medium">Reference</span>
               </h2>
@@ -135,15 +101,6 @@ export default function GlassesPage() {
               </Link>
             </div>
             
-            <div className="md:w-1/2 relative mt-8 md:mt-0">
-              <Image
-                src="/graphics/contact-lens.png"
-                alt="SEN Glasses Product"
-                width={600}
-                height={600}
-                className="w-full h-auto rounded-xl"
-              />
-            </div>
           </div>
         </div>
       </section>

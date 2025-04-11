@@ -12,49 +12,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="h-auto">
         <div 
-          className="flex items-center justify-center bg-gradient-to-b from-[#5728A5] to-[#1e1e1e] px-4 sm:px-6 md:px-8 py-16 md:py-24"
+          className="min-h-[80svh] flex items-center justify-center bg-gradient-to-b from-[#5728A5] to-[#1e1e1e] px-4 sm:px-6 md:px-8 py-16 md:py-24"
         >
           <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-center relative">
-            {/* Left side - Portrait Video */}
-            <div 
-              className="w-full md:w-1/2 flex justify-center md:justify-end mb-8 md:mb-0 md:pr-8"
-            >
-              <div className="relative w-full max-w-[300px] aspect-[9/16] rounded-xl shadow-2xl">
-                <video 
-                  autoPlay 
-                  muted 
-                  loop 
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/videos/sen-portrait-hero.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                
-                {/* Fallback Image if Video Not Available */}
-                <Image 
-                  src="/graphics/contact-lens.png" 
-                  alt="SenAI Product"
-                  width={300}
-                  height={530}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  style={{ opacity: 0, display: 'none' }}
-                  priority
-                />
-                
-                {/* Overlay ChatBubble */}
-                <div className="absolute top-0 left-0 w-full h-full">
-                  <ChatBubble 
-                    position="top-right" 
-                    text="Your social analytics are improving. Keep maintaining eye contact." 
-                    zIndex="z-30"
-                  />
-                </div>
-              </div>
-            </div>
-            
-            {/* Right side - Hero Content */}
-            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left md:pl-8">
+            <div className="w-full min-h-[500px] flex flex-col justify-center items-center md:items-start text-center md:text-left md:pl-8">
               <Image 
                 src="/senAI branding/senAI-long.svg" 
                 alt="SenAI Logo" 
@@ -67,7 +28,7 @@ export default function Home() {
                 Because Being Yourself Is Never Good Enough.
               </h2>
               <p className="text-lg md:text-xl text-white font-light mb-8 max-w-lg">
-                Our AI-powered contact lenses and glasses provide real-time social and emotional guidance, 
+                Our AI-powered wearables provide real-time social and emotional guidance, 
                 so you&apos;ll never have to rely on your own judgement again.
               </p>
               <Link 
@@ -137,13 +98,16 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
-              <Image
-                src="/graphics/contact-cross-section.png"
-                alt="SenAI Contact Lens Cross-section"
-                width={500}
-                height={500}
-                className="rounded-lg"
-              />
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                className="w-full rounded-lg"
+              >
+                <source src="/videos/contacts expanding.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             <div className="md:w-1/2">
               <h2 className="text-3xl font-medium text-white mb-6">
