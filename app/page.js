@@ -7,51 +7,19 @@ import ChatBubble from './chatbubble'
 import FeatureScroll from './modules/FeatureScroll.jsx'
 
 export default function Home() {
-  const videoContainerRef = useRef(null);
-  const [videoScale, setVideoScale] = useState(1);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  
-  useEffect(() => {
-    const handleScroll = () => {
-      if (videoContainerRef.current) {
-        const scrollY = window.scrollY;
-        setScrollPosition(scrollY);
-        
-        // Scale video based on scroll position (starts at 1, shrinks to 0.85)
-        const newScale = Math.max(0.85, 1 - (scrollY * 0.0005));
-        setVideoScale(newScale);
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-[140vh]">
-        {/* Sticky container with background gradient */}
+      <section className="h-auto">
         <div 
-          ref={videoContainerRef}
-          style={{ 
-            position: 'sticky',
-            top: 0,
-            height: '100vh',
-            zIndex: 10
-          }}
-          className="flex items-center justify-center bg-gradient-to-b from-[#5728A5] to-[#1e1e1e] px-4 sm:px-6 md:px-8"
+          className="flex items-center justify-center bg-gradient-to-b from-[#5728A5] to-[#1e1e1e] px-4 sm:px-6 md:px-8 py-16 md:py-24"
         >
-          <div className="max-w-7xl mx-auto w-full h-full flex flex-col md:flex-row items-center justify-center relative">
+          <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-center relative">
             {/* Left side - Portrait Video */}
             <div 
               className="w-full md:w-1/2 flex justify-center md:justify-end mb-8 md:mb-0 md:pr-8"
-              style={{ 
-                transform: `scale(${videoScale})`,
-                transition: 'transform 0.1s ease-out',
-              }}
             >
-              <div className="relative w-full max-w-[300px] aspect-[9/16] rounded-xl overflow-hidden shadow-2xl">
+              <div className="relative w-full max-w-[300px] aspect-[9/16] rounded-xl shadow-2xl">
                 <video 
                   autoPlay 
                   muted 
@@ -86,7 +54,7 @@ export default function Home() {
             </div>
             
             {/* Right side - Hero Content */}
-            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left md:pl-8" style={{ opacity: Math.max(0, 1 - scrollPosition / 400) }}>
+            <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left md:pl-8">
               <Image 
                 src="/senAI branding/senAI-long.svg" 
                 alt="SenAI Logo" 

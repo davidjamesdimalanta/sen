@@ -34,7 +34,7 @@ export default function GlassesPage() {
   return (
     <div className="w-full bg-[#1e1e1e] text-white overflow-x-hidden">
       {/* Hero Section with Sticky Video */}
-      <section className="relative h-[200vh]">
+      <section className="relative h-screen">
         {/* Sticky container */}
         <div 
           ref={videoContainerRef}
