@@ -8,27 +8,34 @@ const videos = [
     id: 1,
     title: 'Social Gatherings',
     description: 'SEN helps navigate complex social interactions at parties and gatherings.',
-    src: '/videos/SENai - party scene.mp4',
+    src: '/videos/laughing.mp4',
     thumbnail: '/videos thumbnails/job_interview.png',
   },
   {
     id: 2,
     title: 'The Job Interview',
     description: 'SEN can help you navigate the job interview process.',
-    src: '/videos/SEN Demo 1.mp4',
+    src: '/videos/laughing.mp4',
     thumbnail: '/videos thumbnails/job_interview.png',
   },
 ];
+
+/* Note: Originally this component used larger, higher-quality videos
+   but they were removed from git tracking due to GitHub's 100MB file size limit.
+   For deployment, replace these fallback videos with your full-quality videos
+   stored in a proper video hosting service like Cloudinary, AWS S3, or similar. */
 
 export default function Demos() {
   const [activeVideo, setActiveVideo] = useState(videos[0]);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef(null);
+  const [videoError, setVideoError] = useState(false);
   
   // Handle video selection
   const handleVideoSelect = (video) => {
     setActiveVideo(video);
     setIsPlaying(false);
+    setVideoError(false);
     
     // Reset main video player
     if (videoRef.current) {
@@ -39,14 +46,23 @@ export default function Demos() {
   
   // Toggle play/pause
   const togglePlayPause = () => {
-    if (videoRef.current) {
+    if (videoRef.current && !videoError) {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
-        videoRef.current.play();
+        videoRef.current.play().catch(err => {
+          console.error("Error playing video:", err);
+          setVideoError(true);
+        });
       }
       setIsPlaying(!isPlaying);
     }
+  };
+  
+  // Handle video error
+  const handleVideoError = () => {
+    setVideoError(true);
+    setIsPlaying(false);
   };
   
   // Update play state when video ends
@@ -80,11 +96,22 @@ export default function Demos() {
             ref={videoRef}
             src={activeVideo.src}
             className="w-full h-full object-cover"
+            onError={handleVideoError}
           />
+          
+          {/* Error Message if video fails to load */}
+          {videoError && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70">
+              <div className="text-center p-4">
+                <p className="text-white text-lg mb-2">Video could not be loaded</p>
+                <p className="text-gray-400 text-sm">Please check that the video file exists</p>
+              </div>
+            </div>
+          )}
           
           {/* Play Button Overlay */}
           <div 
-            className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-opacity ${isPlaying ? 'opacity-0' : 'opacity-100'}`}
+            className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-opacity ${isPlaying || videoError ? 'opacity-0' : 'opacity-100'}`}
             onClick={togglePlayPause}
           >
             <div className="w-20 h-20 rounded-full bg-[#1e1e1e] bg-opacity-50 flex items-center justify-center border-2 border-secondary-meta-blue shadow-lg">
