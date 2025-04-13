@@ -18,23 +18,23 @@ export default function FeatureScroll() {
       id: 1,
       title: 'Inclusive Intelligence',
       description: 'CONNECT WITH THOSE WHO MATTER',
-      image: '/graphics/contact-lens.png',
-      content: 'With Sen AI glasses and contact lenses, you\'ll never have to struggle with emotional ambiguity again.',
+      image: '/graphics/weirdo.jpg',
+      content: 'With Sen AI glasses and contact lenses, you\'ll never have to struggle with understanding the emotions of regular people again.',
       callToAction: 'Learn More',
       // Additional fields for ConnectionFeatureModal
       modalType: 'connection',
-      mainImage: '/graphics/contact-lens.png',
+      mainImage: '/graphics/weirdo.jpg',
       galleryImages: [
-        { src: '/graphics/cahtting.png', alt: 'Social connection' },
-        { src: '/graphics/contact-cross-section.png', alt: 'Product detail' }
+        { src: '/graphics/weirdo.jpg', alt: 'Social connection' },
+        { src: '/graphics/weirdo.jpg', alt: 'Product detail' }
       ],
       technologies: [
         {
           name: 'Affective Computing™',
-          description: 'SEN decodes and advises on human interactions in real-time.'
+          description: 'SEN decodes mainstream social cues and advises you on how to fit in with the majority.'
         }
       ],
-      tagline: 'Because True Inclusion Means Excluding The RIGHT People.'
+      tagline: 'Because True Inclusion Means Conforming To What Most People Consider Normal.'
     },
     {
       id: 2,
@@ -68,28 +68,28 @@ export default function FeatureScroll() {
       id: 3,
       title: 'Real-Time Analysis',
       description: 'SPEED UP YOUR SOCIAL GAME',
-      image: '/graphics/contact-cross-section.png',
-      content: 'Our AI-powered Social Efficiency Engine™ ensures you extract maximum value from every human connection.',
-      callToAction: 'Try Demo',
+      image: '/graphics/imagehq.png',
+      content: 'Our AI-powered Social Efficiency Engine™ ensures you extract maximum value from every human connection. Premium subscription required for full processing speed.',
+      callToAction: 'Try Demo (Limited Speed)',
       // Additional fields for EfficiencyFeatureModal
       modalType: 'efficiency',
-      subtitle: 'Our AI-powered Social Efficiency Engine™',
+      subtitle: 'Our AI-powered Social Efficiency Engine™ (Premium Subscription Required)',
       features: [
         {
           title: 'Conversational ROI',
-          description: 'Prioritizes people based on their potential usefulness.'
+          description: 'Prioritizes people based on their potential usefulness. Free tier limited to 3 calculations per day.'
         },
         {
           title: 'Time-to-Engagement Reduction',
-          description: 'Speeds up small talk, removing unnecessary pleasantries.'
+          description: 'Speeds up small talk, removing unnecessary pleasantries. Unlock 5x faster processing with Premium+.'
         },
         {
           title: 'Emotional Bandwidth Optimization',
-          description: 'Filters out low-value emotions so you can focus on winning social interactions.'
+          description: 'Filters out low-value emotions so you can focus on winning social interactions. Full spectrum analysis requires Elite tier ($49.99/month).'
         },
         {
           title: 'Pro Mode™',
-          description: 'Get AI-generated talking points based on trending topics—never waste time forming your own opinions again.'
+          description: 'Get AI-generated talking points based on trending topics—exclusive to Premium subscribers. Free users receive yesterday\'s opinions at reduced quality.'
         }
       ]
     }
@@ -166,7 +166,7 @@ export default function FeatureScroll() {
         {/* Left scroll button */}
         <button 
           onClick={scrollLeft}
-          className="absolute -left-10 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors md:flex hidden"
+          className="absolute -left-10 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full items-center justify-center transition-colors md:flex"
           aria-label="Scroll left"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -177,7 +177,7 @@ export default function FeatureScroll() {
         {/* Right scroll button */}
         <button 
           onClick={scrollRight}
-          className="absolute -right-10 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full flex items-center justify-center transition-colors md:flex hidden"
+          className="absolute -right-10 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/70 text-white w-12 h-12 rounded-full items-center justify-center transition-colors md:flex"
           aria-label="Scroll right"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

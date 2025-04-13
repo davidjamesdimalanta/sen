@@ -142,7 +142,7 @@ export default function ChatBubble({
           }
         }}
       >
-        <p className="text-sm sm:text-base sen-gradient font-medium">SEN</p>
+        <p className="text-sm sm:text-base bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text font-medium">SEN</p>
         <p className="text-white text-xs sm:text-base" ref={textRef}>Hmm... {displayedText}{isVisible && displayedText !== fullText && <span className="opacity-70 animate-pulse">|</span>}</p>
       </div>
     </div>

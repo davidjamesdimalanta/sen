@@ -1,10 +1,8 @@
-'use client';
-
-import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
 import ChatBubble from './chatbubble'
 import FeatureScroll from './modules/FeatureScroll.jsx'
+import Demos from './modules/Demos.jsx'
 
 export default function Home() {
   return (
@@ -75,13 +73,16 @@ export default function Home() {
               
               {/* Main Image */}
               <div className="rounded-xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/graphics/cahtting.png"
-                  alt="People having social interaction"
-                  width={600}
-                  height={400}
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
                   className="w-full rounded-xl"
-                />
+                >
+                  <source src="/videos/laughing.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           </div>
@@ -127,6 +128,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* Demos Section */}
+      <Demos />
     </div>
   )
 }

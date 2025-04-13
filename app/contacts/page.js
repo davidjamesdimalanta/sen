@@ -76,7 +76,7 @@ export default function ContactsPage() {
           {/* Hero Headline */}
           <div className="pt-8 md:pt-36 text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-light max-w-4xl mx-auto px-4">
-              SEN <span className="font-medium">Contacts</span>. 
+              <span className="bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text">SEN</span> <span className="font-medium">Contacts</span>. 
               <span className="block mt-2">Intelligence you can see.</span>
             </h1>
             <p className="text-lg md:text-xl font-light mt-4 max-w-2xl mx-auto px-4 text-gray-300">
@@ -119,12 +119,6 @@ export default function ContactsPage() {
             
           {/* Call to Action */}
           <div className="text-center pb-8 md:pb-12 px-4">
-            <Link 
-              href="/pre-order" 
-              className="bg-white text-[#5728A5] px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all text-base md:text-lg inline-block"
-            >
-              Pre-order now
-            </Link>
             <p className="mt-2 text-xs text-gray-400">
               Available starting Fall 2024. Shipping within the United States only.
             </p>

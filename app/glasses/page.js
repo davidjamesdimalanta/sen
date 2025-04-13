@@ -54,7 +54,7 @@ export default function GlassesPage() {
           <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center items-center relative">
             {/* Hero Content */}
             <div className="text-center mb-8 md:mb-12" style={{ opacity: Math.max(0, 1 - scrollPosition / 300) }}>
-              <h1 className="text-5xl md:text-7xl font-light mb-4 md:mb-6">SEN <span className="font-medium">Glasses</span></h1>
+              <h1 className="text-5xl md:text-7xl font-light mb-4 md:mb-6 bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text">SEN <span className="font-medium">Glasses</span></h1>
               <p className="text-xl md:text-2xl font-light max-w-2xl mx-auto px-4">
                 See the world through algorithm-colored glasses.
               </p>
@@ -123,7 +123,7 @@ export default function GlassesPage() {
                 </svg>
               </div>
               
-              <h3 className="text-lg md:text-xl font-medium mb-3 md:mb-4 text-[#02A9F7] sen-gradient">Emotional Analysis™</h3>
+              <h3 className="text-lg md:text-xl font-medium mb-3 md:mb-4 text-[#02A9F7] bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text">Emotional Analysis™</h3>
               <p className="font-light text-sm md:text-base">
                 Advanced sensors detect and analyze facial expressions, voice patterns, and physiological signals 
                 to tell you exactly how people are feeling - even when they don&apos;t know themselves.
@@ -138,7 +138,7 @@ export default function GlassesPage() {
                 </svg>
               </div>
               
-              <h3 className="text-lg md:text-xl font-medium mb-3 md:mb-4 text-[#02A9F7] sen-gradient">Social Optimization™</h3>
+              <h3 className="text-lg md:text-xl font-medium mb-3 md:mb-4 text-[#02A9F7] bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text">Social Optimization™</h3>
               <p className="font-light text-sm md:text-base">
                 Revolutionary algorithms provide real-time conversational guidance, suggesting optimal responses 
                 based on your goals for the interaction and the emotional state of your audience.
@@ -153,7 +153,7 @@ export default function GlassesPage() {
                 </svg>
               </div>
               
-              <h3 className="text-lg md:text-xl font-medium mb-3 md:mb-4 text-[#02A9F7] sen-gradient">Risk Alerts™</h3>
+              <h3 className="text-lg md:text-xl font-medium mb-3 md:mb-4 text-[#02A9F7] bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text">Risk Alerts™</h3>
               <p className="font-light text-sm md:text-base">
                 Receive instant notifications when someone&apos;s behavior deviates from statistical norms, 
                 allowing you to avoid unpredictable social situations before they become uncomfortable.

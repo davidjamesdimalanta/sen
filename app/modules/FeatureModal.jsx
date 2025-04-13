@@ -79,7 +79,7 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
       <div className="flex flex-col max-h-[100vh]">
         {/* Header */}
         <div className="py-8">
-          <span className="text-secondary-meta-blue font-medium text-lg">{feature.title}</span>
+          <span className="text-[#02a9f7] font-medium text-lg">{feature.title}</span>
           <h2 className="text-4xl font-bold text-white">{feature.description}</h2>
           <p className="text-white/80 font-light text-xl md:text-2xl">
               {feature.content}
@@ -92,7 +92,7 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
             <div className="w-full flex-1 flex flex-col md:flex-row px-4 md:px-12 mb-12 md:mb-16">
               <div className="w-full md:w-1/2 flex flex-col justify-center items-start mb-6 md:mb-0">
                 <div>
-                  <h4 className="text-2xl md:text-4xl font-medium sen-gradient overflow-visible">
+                  <h4 className="text-2xl md:text-4xl font-medium bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text overflow-visible">
                     {feature.bulletPoints[0].title}
                   </h4>
                   <p className="text-white/80 text-lg md:text-xl mt-2">{feature.bulletPoints[0].description}</p>
@@ -100,10 +100,10 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
               </div>
               <div className="relative w-full md:w-1/2">
                 <div className="absolute top-0 left-0 w-full h-full">
-                  <ChatBubble position="bottom-left" text="Your Authenticity Score is dropping. Conform now!" theme="dark"/>
+                  <ChatBubble position="bottom-left" text="That wasn't very typical of you." theme="dark"/>
                 </div>
                 <Image
-                  src="/graphics/cahtting.png"
+                  src="/graphics/not-typical.jpg"
                   alt="People having social interaction"
                   width={600}
                   height={400}
@@ -116,7 +116,7 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
             <div className="w-full flex-1 flex flex-col md:flex-row-reverse px-4 md:px-12 mb-12 md:mb-16">
               <div className="w-full md:w-1/2 flex flex-col justify-center items-start mb-6 md:mb-0">
                 <div className="w-full">
-                  <h4 className="text-2xl md:text-4xl font-medium sen-gradient overflow-visible md:text-right">
+                  <h4 className="text-2xl md:text-4xl font-medium bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text overflow-visible md:text-right">
                     {feature.bulletPoints[1].title}
                   </h4>
                   <p className="text-white/80 text-lg md:text-xl mt-2 md:text-right">{feature.bulletPoints[1].description}</p>
@@ -127,7 +127,7 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
                   <ChatBubble position="top-right" text="Adjusting personality to match current audience..." theme="dark"/>
                 </div>
                 <Image
-                  src="/graphics/cahtting.png"
+                  src="/graphics/pexels-silverkblack-23495586.jpg"
                   alt="Crowd calibration visualization"
                   width={600}
                   height={400}
@@ -140,13 +140,13 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
             <div className="w-full flex-1 flex flex-col md:flex-row px-4 md:px-12">
               <div className="w-full md:w-1/2 flex flex-col justify-center items-start space-y-6 md:space-y-8 mb-6 md:mb-0">
                 <div>
-                  <h4 className="text-2xl md:text-4xl font-medium sen-gradient overflow-visible">
+                  <h4 className="text-2xl md:text-4xl font-medium bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text overflow-visible">
                     {feature.bulletPoints[2].title}
                   </h4>
                   <p className="text-white/80 text-lg md:text-xl mt-2">{feature.bulletPoints[2].description}</p>
                 </div>
                 <div>
-                  <h4 className="text-2xl md:text-4xl font-medium sen-gradient overflow-visible">
+                  <h4 className="text-2xl md:text-4xl font-medium bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text overflow-visible">
                     {feature.bulletPoints[3].title}
                   </h4>
                   <p className="text-white/80 text-lg md:text-xl mt-2">{feature.bulletPoints[3].description}</p>
@@ -157,7 +157,7 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
                   <ChatBubble position="top-right" text="Warning: Atypical behavior detected. Avoid this person." theme="dark"/>
                 </div>
                 <Image
-                  src="/graphics/cahtting.png"
+                  src="/graphics/pexels-shvets-production-8410782.jpg"
                   alt="Alert visualization"
                   width={600}
                   height={400}
@@ -179,7 +179,7 @@ export function EfficiencyFeatureModal({ feature, onClose, isOpen }) {
       <div className="flex flex-col h-full">
         {/* Header */}
         <div className="py-8">
-          <span className="text-secondary-meta-blue font-medium text-lg">{feature.title}</span>
+          <span className="text-[#02a9f7] font-medium text-lg">{feature.title}</span>
           <h2 className="text-4xl font-bold text-white">{feature.description}</h2>
           <p className="text-white/80 font-light text-xl md:text-2xl">
               {feature.content}
@@ -207,7 +207,7 @@ export function EfficiencyFeatureModal({ feature, onClose, isOpen }) {
               {feature.features && feature.features.map((item, index) => (
                 <div key={index} className="border-b border-white/10 pb-6 last:border-0">
                   <h4 className="text-2xl font-medium text-white flex items-center">
-                    <span className="sen-gradient mr-2">{item.title}</span>
+                    <span className="bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text mr-2">{item.title}</span>
                   </h4>
                   <p className="text-white/80 mt-2">{item.description}</p>
                 </div>
@@ -233,7 +233,7 @@ export function ConnectionFeatureModal({ feature, onClose, isOpen }) {
       <div className="flex flex-col h-auto">
         {/* Header */}
         <div className="py-8">
-          <span className="text-secondary-meta-blue font-medium text-lg">{feature.title}</span>
+          <span className="text-[#02a9f7] font-medium text-lg">{feature.title}</span>
           <h2 className="text-4xl font-bold text-white">{feature.description}</h2>
           <p className="text-white/80 font-light text-xl md:text-2xl">
               {feature.content}
@@ -246,7 +246,7 @@ export function ConnectionFeatureModal({ feature, onClose, isOpen }) {
             <div className="w-full flex-1 flex flex-row my-4">
               <div className="w-full flex flex-col justify-center items-start">
                 <div>
-                  <h4 className="text-4xl font-medium sen-gradient overflow-visible">
+                  <h4 className="text-4xl font-medium bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text overflow-visible">
                     {feature.technologies[0].name}
                   </h4>
                   <p className="text-white/80 text-xl">{feature.technologies[0].description}</p>
@@ -254,10 +254,10 @@ export function ConnectionFeatureModal({ feature, onClose, isOpen }) {
               </div>
             </div>
             <div className="w-full relative flex flex-col rounded-2xl">
-                <ChatBubble position="top-right" text="Your Authenticity Score is dropping. Conform now!" theme="light"/>
+                <ChatBubble position="top-right" text="You're not acting normally. Conform now!" theme="light"/>
                 {/* Main Image */}
                 <Image
-                    src="/graphics/cahtting.png"
+                    src="/graphics/weirdo.jpg"
                     alt="People having social interaction"
                     width={600}
                     height={400}

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Albert_Sans } from "next/font/google"
 import './globals.css'
+
 // Load Albert Sans font
 const albertSans = Albert_Sans({
   subsets: ["latin"],

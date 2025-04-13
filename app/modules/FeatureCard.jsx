@@ -1,6 +1,3 @@
-'use client';
-
-import { useState } from 'react';
 import Image from 'next/image';
 
 export default function FeatureCard({ feature, onClick }) {
@@ -34,7 +31,7 @@ export default function FeatureCard({ feature, onClick }) {
       <div className="absolute inset-0 flex flex-col justify-start p-6 text-white z-10">
         <div>
         <div>
-          <span className="text-sm font-medium mb-1 text-secondary-meta-blue">{feature.title}</span>
+          <span className="text-sm font-medium mb-1 text-[#02a9f7]">{feature.title}</span>
         </div>
           <h3 className="text-3xl font-bold">{feature.description}</h3>
         </div>
