@@ -123,7 +123,7 @@ export default function ContactsPage() {
             <div className="flex justify-center items-center py-4">
               <div className="relative w-full max-w-lg px-4">
                 <Image 
-                  src="/public/graphics/contact-lens.png"
+                  src="/graphics/contact-lens.png"
                   alt="SEN Contacts in use"
                   width={600}
                   height={600}
@@ -232,7 +232,7 @@ export default function ContactsPage() {
                     <source src={videoUrls.influencer1} type="video/mp4" />
                     {/* Fallback image if video doesn't load */}
                     <Image
-                      src="/public/graphics/contact-cross-section.png"
+                      src="/graphics/contact-cross-section.png"
                       alt="SEN Contact Lens Technology"
                       width={600}
                       height={600}
@@ -334,7 +334,7 @@ export default function ContactsPage() {
                     <source src={videoUrls.influencer2} type="video/mp4" />
                     {/* Fallback image if video doesn't load */}
                     <Image
-                      src="/public/graphics/contact-cross-section.png"
+                      src="/graphics/contact-cross-section.png"
                       alt="SEN Contact Lens Technology"
                       width={600}
                       height={600}
@@ -436,7 +436,7 @@ export default function ContactsPage() {
                     <source src={videoUrls.influencer3} type="video/mp4" />
                     {/* Fallback image if video doesn't load */}
                     <Image
-                      src="/public/graphics/contact-cross-section.png"
+                      src="/graphics/contact-cross-section.png"
                       alt="SEN Contact Lens Technology"
                       width={600}
                       height={600}

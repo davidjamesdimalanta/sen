@@ -19,7 +19,7 @@ export default function ShopPage() {
           <div className="flex flex-col items-center">
             <div className="bg-white rounded-xl mb-8 p-6 w-full max-w-md h-48 flex items-center justify-center">
               <Image 
-                src="/public/graphics/mockuplens.png" 
+                src="/graphics/mockuplens.png" 
                 alt="SENlens contact lens" 
                 width={250} 
                 height={150} 
@@ -65,7 +65,7 @@ export default function ShopPage() {
           <div className="flex flex-col items-center">
             <div className="bg-white rounded-xl mb-8 p-6 w-full max-w-md h-48 flex items-center justify-center">
               <Image 
-                src="/public/graphics/glasses-mockup.png" 
+                src="/graphics/glasses-mockup.png" 
                 alt="SENglass smart glasses" 
                 width={250} 
                 height={150} 
@@ -113,7 +113,7 @@ export default function ShopPage() {
           <div className="flex flex-col md:flex-row gap-12">
             <div className="md:w-2/5">
               <Image 
-                src="/public/graphics/analytics.png" 
+                src="/graphics/analytics.png" 
                 alt="AI Social Efficiency Engine"
                 width={400}
                 height={400}

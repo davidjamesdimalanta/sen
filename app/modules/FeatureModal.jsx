@@ -103,7 +103,7 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
                   <ChatBubble position="bottom-left" text="That wasn't very typical of you." theme="dark"/>
                 </div>
                 <Image
-                  src="/public/graphics/not-typical.jpg"
+                  src="/graphics/not-typical.jpg"
                   alt="People having social interaction"
                   width={600}
                   height={400}
@@ -127,7 +127,7 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
                   <ChatBubble position="top-right" text="Adjusting personality to match current audience..." theme="dark"/>
                 </div>
                 <Image
-                  src="/public/graphics/pexels-silverkblack-23495586.jpg"
+                  src="/graphics/pexels-silverkblack-23495586.jpg"
                   alt="Crowd calibration visualization"
                   width={600}
                   height={400}
@@ -157,7 +157,7 @@ export function StandardFeatureModal({ feature, onClose, isOpen }) {
                   <ChatBubble position="top-right" text="Warning: Atypical behavior detected. Avoid this person." theme="dark"/>
                 </div>
                 <Image
-                  src="/public/graphics/pexels-shvets-production-8410782.jpg"
+                  src="/graphics/pexels-shvets-production-8410782.jpg"
                   alt="Alert visualization"
                   width={600}
                   height={400}
@@ -257,7 +257,7 @@ export function ConnectionFeatureModal({ feature, onClose, isOpen }) {
                 <ChatBubble position="top-right" text="You're not acting normally. Conform now!" theme="light"/>
                 {/* Main Image */}
                 <Image
-                    src="/public/graphics/weirdo.jpg"
+                    src="/graphics/weirdo.jpg"
                     alt="People having social interaction"
                     width={600}
                     height={400}
