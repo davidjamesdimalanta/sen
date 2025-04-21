@@ -53,7 +53,7 @@ export default function AboutPage() {
                 playsInline
                 className="w-full h-auto max-h-[600px] rounded-xl shadow-2xl object-cover"
               >
-                <source src="/videos/day in my life.mp4" type="video/mp4" />
+                <source src="https://senai-videos.s3.us-east-2.amazonaws.com/day%20in%20my%20life.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
             </div>

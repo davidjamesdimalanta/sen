@@ -2,7 +2,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
-import { getVideoUrl } from '../utils/s3';
+
+// Define S3 URLs directly
+const influencer1VideoUrl = 'https://senai-videos.s3.us-east-2.amazonaws.com/influencer1.mp4';
+const influencer2VideoUrl = 'https://senai-videos.s3.us-east-2.amazonaws.com/influencer2.mp4';
+const influencer3VideoUrl = 'https://senai-videos.s3.us-east-2.amazonaws.com/influencer3.mp4';
 
 export default function ContactsPage() {
   const [isMuted, setIsMuted] = useState(true);
@@ -11,38 +15,6 @@ export default function ContactsPage() {
   const [activeSection, setActiveSection] = useState(0);
   const textSections = useRef([]);
   const [isInFeatureSection, setIsInFeatureSection] = useState(false);
-  const [videoUrls, setVideoUrls] = useState({
-    influencer1: null,
-    influencer2: null,
-    influencer3: null
-  });
-  const [isLoading, setIsLoading] = useState(true);
-  
-  // Load videos from S3
-  useEffect(() => {
-    const loadVideos = async () => {
-      setIsLoading(true);
-      try {
-        const [influencer1Url, influencer2Url, influencer3Url] = await Promise.all([
-          getVideoUrl('videos/influencer1.mp4'),
-          getVideoUrl('videos/influencer2.mp4'),
-          getVideoUrl('videos/influencer3.mp4')
-        ]);
-        
-        setVideoUrls({
-          influencer1: influencer1Url,
-          influencer2: influencer2Url,
-          influencer3: influencer3Url
-        });
-      } catch (error) {
-        console.error('Error loading videos:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    
-    loadVideos();
-  }, []);
   
   const toggleMute = (index) => {
     if (videoRefs.current[index]) {
@@ -69,7 +41,7 @@ export default function ContactsPage() {
       observer.observe(videoElement);
       return () => observer.disconnect();
     });
-  }, [videoUrls]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -215,31 +187,25 @@ export default function ContactsPage() {
                   )}
                 </button>
                 
-                {isLoading ? (
-                  <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
-                  </div>
-                ) : (
-                  <video 
-                    ref={el => videoRefs.current[0] = el}
-                    muted 
-                    loop 
-                    playsInline
-                    className="w-full h-full object-cover rounded-xl cursor-pointer"
-                    poster="/graphics/contact-cross-section.png"
-                    onClick={() => toggleMute(0)}
-                  >
-                    <source src={videoUrls.influencer1} type="video/mp4" />
-                    {/* Fallback image if video doesn't load */}
-                    <Image
-                      src="/graphics/contact-cross-section.png"
-                      alt="SEN Contact Lens Technology"
-                      width={600}
-                      height={600}
-                      className="w-full h-auto"
-                    />
-                  </video>
-                )}
+                <video 
+                  ref={el => videoRefs.current[0] = el}
+                  muted 
+                  loop 
+                  playsInline
+                  className="w-full h-full object-cover rounded-xl cursor-pointer"
+                  poster="/graphics/contact-cross-section.png"
+                  onClick={() => toggleMute(0)}
+                >
+                  <source src={influencer1VideoUrl} type="video/mp4" />
+                  {/* Fallback image if video doesn't load */}
+                  <Image
+                    src="/graphics/contact-cross-section.png"
+                    alt="SEN Contact Lens Technology"
+                    width={600}
+                    height={600}
+                    className="w-full h-auto"
+                  />
+                </video>
               </div>
             </div>
           </div>
@@ -317,31 +283,25 @@ export default function ContactsPage() {
                   )}
                 </button>
                 
-                {isLoading ? (
-                  <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
-                  </div>
-                ) : (
-                  <video 
-                    ref={el => videoRefs.current[1] = el}
-                    muted 
-                    loop 
-                    playsInline
-                    className="w-full h-full object-cover rounded-xl cursor-pointer"
-                    poster="/graphics/contact-cross-section.png"
-                    onClick={() => toggleMute(1)}
-                  >
-                    <source src={videoUrls.influencer2} type="video/mp4" />
-                    {/* Fallback image if video doesn't load */}
-                    <Image
-                      src="/graphics/contact-cross-section.png"
-                      alt="SEN Contact Lens Technology"
-                      width={600}
-                      height={600}
-                      className="w-full h-auto"
-                    />
-                  </video>
-                )}
+                <video 
+                  ref={el => videoRefs.current[1] = el}
+                  muted 
+                  loop 
+                  playsInline
+                  className="w-full h-full object-cover rounded-xl cursor-pointer"
+                  poster="/graphics/pexels-andrewpersonalstyling-16225417.jpg"
+                  onClick={() => toggleMute(1)}
+                >
+                  <source src={influencer2VideoUrl} type="video/mp4" />
+                  {/* Fallback image if video doesn't load */}
+                  <Image
+                    src="/graphics/pexels-andrewpersonalstyling-16225417.jpg"
+                    alt="SEN Contact Lens Technology"
+                    width={600}
+                    height={600}
+                    className="w-full h-auto"
+                  />
+                </video>
               </div>
             </div>
           </div>
@@ -419,31 +379,25 @@ export default function ContactsPage() {
                   )}
                 </button>
                 
-                {isLoading ? (
-                  <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
-                  </div>
-                ) : (
-                  <video 
-                    ref={el => videoRefs.current[2] = el}
-                    muted 
-                    loop 
-                    playsInline
-                    className="w-full h-full object-cover rounded-xl cursor-pointer"
-                    poster="/graphics/contact-cross-section.png"
-                    onClick={() => toggleMute(2)}
-                  >
-                    <source src={videoUrls.influencer3} type="video/mp4" />
-                    {/* Fallback image if video doesn't load */}
-                    <Image
-                      src="/graphics/contact-cross-section.png"
-                      alt="SEN Contact Lens Technology"
-                      width={600}
-                      height={600}
-                      className="w-full h-auto"
-                    />
-                  </video>
-                )}
+                <video 
+                  ref={el => videoRefs.current[2] = el}
+                  muted 
+                  loop 
+                  playsInline
+                  className="w-full h-full object-cover rounded-xl cursor-pointer"
+                  poster="/graphics/pexels-darina-belonogova-8353160.jpg"
+                  onClick={() => toggleMute(2)}
+                >
+                  <source src={influencer3VideoUrl} type="video/mp4" />
+                  {/* Fallback image if video doesn't load */}
+                  <Image
+                    src="/graphics/pexels-darina-belonogova-8353160.jpg"
+                    alt="SEN Contact Lens Technology"
+                    width={600}
+                    height={600}
+                    className="w-full h-auto"
+                  />
+                </video>
               </div>
             </div>
           </div>

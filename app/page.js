@@ -6,38 +6,12 @@ import Link from 'next/link'
 import ChatBubble from './chatbubble'
 import FeatureScroll from './modules/FeatureScroll.jsx'
 import Demos from './modules/Demos.jsx'
-import { getVideoUrl } from './utils/s3'
+
+// Define S3 URLs directly
+const laughingVideoUrl = 'https://senai-videos.s3.us-east-2.amazonaws.com/laughing.mp4';
+const contactsExpandingVideoUrl = 'https://senai-videos.s3.us-east-2.amazonaws.com/contacts%20expanding.mp4';
 
 export default function Home() {
-  const [videoUrls, setVideoUrls] = useState({
-    laughing: null,
-    contactsExpanding: null,
-  });
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadVideos = async () => {
-      setIsLoading(true);
-      try {
-        const [laughingUrl, contactsUrl] = await Promise.all([
-          getVideoUrl('videos/laughing.mp4'),
-          getVideoUrl('videos/contacts expanding.mp4'),
-        ]);
-
-        setVideoUrls({
-          laughing: laughingUrl,
-          contactsExpanding: contactsUrl,
-        });
-      } catch (error) {
-        console.error('Error loading videos:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadVideos();
-  }, []);
-
   return (
     <div className="w-full overflow-x-hidden">
       {/* Hero Section */}
@@ -106,22 +80,16 @@ export default function Home() {
               
               {/* Main Image */}
               <div className="rounded-xl overflow-hidden shadow-2xl">
-                {isLoading ? (
-                  <div className="w-full aspect-video bg-gray-800 flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
-                  </div>
-                ) : (
-                  <video 
-                    autoPlay 
-                    loop 
-                    muted 
-                    playsInline
-                    className="w-full rounded-xl"
-                  >
-                    <source src={videoUrls.laughing} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                )}
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full rounded-xl"
+                >
+                  <source src={laughingVideoUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           </div>
@@ -138,22 +106,16 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2">
-              {isLoading ? (
-                <div className="w-full aspect-video bg-gray-800 flex items-center justify-center rounded-lg">
-                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
-                </div>
-              ) : (
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  className="w-full rounded-lg"
-                >
-                  <source src={videoUrls.contactsExpanding} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-              )}
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                className="w-full rounded-lg"
+              >
+                <source src={contactsExpandingVideoUrl} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             <div className="md:w-1/2">
               <h2 className="text-3xl font-medium text-white mb-6">

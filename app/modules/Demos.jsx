@@ -2,71 +2,31 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
-import { getVideoUrl } from '../utils/s3';
 
-// Default video data structure that will be updated with S3 URLs
+// Define video data with direct S3 URLs
 const videoData = [
   {
     id: 1,
     title: 'Social Gatherings',
     description: 'SEN helps navigate complex social interactions at parties and gatherings.',
-    key: 'videos/SENai - party scene.mp4',
-    src: '', // Will be populated with S3 URL
+    src: 'https://senai-videos.s3.us-east-2.amazonaws.com/SENai%20-%20party%20scene.mp4', // Direct URL
     thumbnail: '/videos thumbnails/party.png',
   },
   {
     id: 2,
     title: 'The Job Interview',
     description: 'SEN can help you navigate the job interview process.',
-    key: 'videos/SEN Demo 1.mp4',
-    src: '', // Will be populated with S3 URL
+    src: 'https://senai-videos.s3.us-east-2.amazonaws.com/SEN%20Demo%201.mp4', // Direct URL
     thumbnail: '/videos thumbnails/job_interview.png',
   },
 ];
 
 export default function Demos() {
+  // Initialize state directly with the video data and first video as active
   const [videos, setVideos] = useState(videoData);
-  const [activeVideo, setActiveVideo] = useState(null);
+  const [activeVideo, setActiveVideo] = useState(videoData.length > 0 ? videoData[0] : null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
-  
-  // Load videos from S3 on component mount
-  useEffect(() => {
-    const loadVideosFromS3 = async () => {
-      setIsLoading(true);
-      try {
-        // Get signed URLs for each video
-        const updatedVideos = await Promise.all(
-          videoData.map(async (video) => {
-            try {
-              const signedUrl = await getVideoUrl(video.key);
-              return { ...video, src: signedUrl };
-            } catch (error) {
-              console.error(`Error getting URL for video ${video.key}:`, error);
-              return { ...video, error: true };
-            }
-          })
-        );
-        
-        // Filter out videos that failed to load
-        const validVideos = updatedVideos.filter(video => !video.error);
-        
-        if (validVideos.length > 0) {
-          setVideos(validVideos);
-          setActiveVideo(validVideos[0]);
-        } else {
-          console.error('No valid videos found in S3');
-        }
-      } catch (error) {
-        console.error('Error loading videos from S3:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    
-    loadVideosFromS3();
-  }, []);
   
   // Handle video selection
   const handleVideoSelect = (video) => {
@@ -129,12 +89,13 @@ export default function Demos() {
     };
   }, []);
 
-  // If still loading videos or no active video yet
-  if (isLoading || !activeVideo) {
+  // Remove loading check, handle case where there might be no videos initially
+  if (!activeVideo) { // Check if activeVideo exists
     return (
       <section className="py-20 bg-[#1e1e1e] text-white">
         <div className="max-w-6xl mx-auto px-4 flex justify-center items-center" style={{ minHeight: '400px' }}>
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
+          {/* Optional: Show a message or different UI if no videos are defined */}
+          <p>No demos available.</p>
         </div>
       </section>
     );
@@ -151,10 +112,10 @@ export default function Demos() {
           <video
             ref={videoRef}
             src={activeVideo.src}
+            poster={activeVideo.thumbnail}
             className="w-full h-full object-cover"
             crossOrigin="anonymous"
             preload="metadata"
-            muted
           />
           
           {/* Play Button Overlay */}
