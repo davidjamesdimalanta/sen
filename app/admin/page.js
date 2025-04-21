@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { listVideos, getVideoUrl, uploadVideo, deleteVideo } from '../utils/s3';
 
 export default function AdminPage() {
   const [videos, setVideos] = useState([]);
