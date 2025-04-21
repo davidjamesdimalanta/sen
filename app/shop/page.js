@@ -19,7 +19,7 @@ export default function ShopPage() {
           <div className="flex flex-col items-center">
             <div className="bg-white rounded-xl mb-8 p-6 w-full max-w-md h-48 flex items-center justify-center">
               <Image 
-                src="/graphics/contact-lens.png" 
+                src="/graphics/mockuplens.png" 
                 alt="SENlens contact lens" 
                 width={250} 
                 height={150} 
@@ -65,7 +65,7 @@ export default function ShopPage() {
           <div className="flex flex-col items-center">
             <div className="bg-white rounded-xl mb-8 p-6 w-full max-w-md h-48 flex items-center justify-center">
               <Image 
-                src="/graphics/mockupglasses.png" 
+                src="/graphics/glasses-mockup.png" 
                 alt="SENglass smart glasses" 
                 width={250} 
                 height={150} 
@@ -104,6 +104,156 @@ export default function ShopPage() {
                 <p className="text-gray-400">SEN intelligence</p>
               </div>
             
+            </div>
+          </div>
+        </div>
+
+        {/* AI-Powered Features Section */}
+        <div className="mt-32 mb-20 bg-[#212121] rounded-lg p-8 md:p-12">
+          <div className="flex flex-col md:flex-row gap-12">
+            <div className="md:w-2/5">
+              <Image 
+                src="/graphics/analytics.png" 
+                alt="AI Social Efficiency Engine"
+                width={400}
+                height={400}
+                className="object-cover rounded-lg"
+              />
+            </div>
+            
+            <div className="md:w-3/5 flex flex-col justify-center">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">
+                Our AI-powered Social Efficiency Engine™ (Premium Subscription Required)
+              </h2>
+              
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-xl text-[#02A9F7] font-medium mb-2">Conversational ROI</h3>
+                  <p className="text-gray-300 text-sm">
+                    Prioritizes people based on their potential usefulness. Free tier limited to 3 calculations per day.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl text-[#02A9F7] font-medium mb-2">Time-to-Engagement Reduction</h3>
+                  <p className="text-gray-300 text-sm">
+                    Speeds up small talk, removing unnecessary pleasantries. Unlock 5x faster processing with Premium+.
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl text-[#02A9F7] font-medium mb-2">Emotional Bandwidth Optimization</h3>
+                  <p className="text-gray-300 text-sm">
+                    Filters out low-value emotions so you can focus on winning social interactions. Full spectrum analysis requires Elite tier ($49.99/month).
+                  </p>
+                </div>
+                
+                <div>
+                  <h3 className="text-xl text-[#02A9F7] font-medium mb-2">Pro Mode™</h3>
+                  <p className="text-gray-300 text-sm">
+                    Get AI-generated talking points based on trending topics—exclusive to Premium subscribers. Free users receive yesterday&apos;s opinions at reduced quality.
+                  </p>
+                </div>
+                
+                <button className="bg-transparent border border-white text-white py-2 px-6 rounded-sm hover:bg-white hover:text-[#212121] transition-colors">
+                  Try Demo (Limited Speed)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Subscription Plans Section */}
+        <div className="mt-32 mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-16 text-white text-center">
+            HOW VALUABLE ARE SOCIAL CONNECTIONS TO YOU?
+          </h2>
+          
+          <div className="flex flex-col md:flex-row gap-8 md:gap-12 justify-center">
+            {/* Basic Plan */}
+            <div className="bg-[white] text-black p-8 md:p-10 rounded-sm w-full md:w-1/2">
+              <h3 className="text-2xl font-bold mb-2">BASIC PLAN</h3>
+              <p className="mb-6 text-gray-700">
+                For individuals who want essential features for an unbeatable value
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <div className="text-black mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <p>EXCLUSIVE and EARLY access to premium features and content</p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="text-black mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <p>Priority recommendations for faster and more tailored suggestions</p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="text-black mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <p>Personalized support with dedicated customer service</p>
+                </div>
+              </div>
+              
+              <p className="text-2xl font-bold mb-6">$192 Annual Payment</p>
+              
+              <button className="bg-black text-white py-3 px-6 font-medium hover:bg-gray-800 transition-colors">
+                PURCHASE
+              </button>
+            </div>
+            
+            {/* Premium Plan */}
+            <div className="bg-white text-black p-8 md:p-10 rounded-sm w-full md:w-1/2">
+              <h3 className="text-2xl font-bold mb-2">PREMIUM PLAN</h3>
+              <p className="mb-6 text-gray-700">
+                For individuals who really want to foster smarter, worthwhile connections and a seamless experience
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start gap-3">
+                  <div className="text-black mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <p>All the features in the Basic Plan and...</p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="text-black mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <p>VIP UNLIMITED access to special events, workshops, and webinars</p>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <div className="text-black mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <p>Customized reports with a monthly analysis of your activity</p>
+                </div>
+              </div>
+              
+              <p className="text-2xl font-bold mb-6">$300 Annual Payment</p>
+              
+              <button className="bg-black text-white py-3 px-6 font-medium hover:bg-gray-800 transition-colors">
+                PURCHASE
+              </button>
             </div>
           </div>
         </div>

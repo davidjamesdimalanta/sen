@@ -30,14 +30,17 @@ export default function RootLayout({ children }) {
               <Link href="/" className="flex items-center">
               </Link>
               <div className="md:flex space-x-4 md:space-x-8">
+              <Link href="/" className="text-white hover:text-[#89d6fb] font-light transition-colors">
+                  HOME
+                </Link>
                 <Link href="/contacts" className="text-white hover:text-[#89d6fb] font-light transition-colors">
                   CONTACTS
                 </Link>
                 <Link href="/glasses" className="text-white hover:text-[#89d6fb] font-light transition-colors">
                   GLASSES
                 </Link>
-                <Link href="/" className="text-white hover:text-[#89d6fb] font-light transition-colors">
-                  sen.ai
+                <Link href="/about" className="text-white hover:text-[#89d6fb] font-light transition-colors">
+                  ABOUT
                 </Link>
               </div>
             </div>

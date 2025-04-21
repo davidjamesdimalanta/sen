@@ -18,15 +18,15 @@ export default function FeatureScroll() {
       id: 1,
       title: 'Inclusive Intelligence',
       description: 'CONNECT WITH THOSE WHO MATTER',
-      image: '/graphics/weirdo.jpg',
+      image: '/graphics/profile.png',
       content: 'With Sen AI glasses and contact lenses, you\'ll never have to struggle with understanding the emotions of regular people again.',
       callToAction: 'Learn More',
       // Additional fields for ConnectionFeatureModal
       modalType: 'connection',
-      mainImage: '/graphics/weirdo.jpg',
+      mainImage: '/graphics/profile.png',
       galleryImages: [
-        { src: '/graphics/weirdo.jpg', alt: 'Social connection' },
-        { src: '/graphics/weirdo.jpg', alt: 'Product detail' }
+        { src: '/graphics/profile.png', alt: 'Social connection' },
+        { src: '/graphics/profile.png', alt: 'Product detail' }
       ],
       technologies: [
         {
@@ -40,7 +40,7 @@ export default function FeatureScroll() {
       id: 2,
       title: 'Data-Driven Advice',
       description: 'SOCIALIZE NORMALLY',
-      image: '/graphics/cahtting.png',
+      image: '/graphics/page1.png',
       content: 'Sen AI analyzes millions of behavioral datasets to generate instant recommendations for acceptable behavior.',
       callToAction: 'See How It Works',
       // Additional fields for StandardFeatureModal
@@ -68,7 +68,7 @@ export default function FeatureScroll() {
       id: 3,
       title: 'Real-Time Analysis',
       description: 'SPEED UP YOUR SOCIAL GAME',
-      image: '/graphics/imagehq.png',
+      image: '/graphics/analytics.png',
       content: 'Our AI-powered Social Efficiency Engine™ ensures you extract maximum value from every human connection. Premium subscription required for full processing speed.',
       callToAction: 'Try Demo (Limited Speed)',
       // Additional fields for EfficiencyFeatureModal

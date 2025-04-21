@@ -2,40 +2,76 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { getVideoUrl } from '../utils/s3';
 
-const videos = [
+// Default video data structure that will be updated with S3 URLs
+const videoData = [
   {
     id: 1,
     title: 'Social Gatherings',
     description: 'SEN helps navigate complex social interactions at parties and gatherings.',
-    src: '/videos/laughing.mp4',
-    thumbnail: '/videos thumbnails/job_interview.png',
+    key: 'videos/SENai - party scene.mp4',
+    src: '', // Will be populated with S3 URL
+    thumbnail: '/videos thumbnails/party.png',
   },
   {
     id: 2,
     title: 'The Job Interview',
     description: 'SEN can help you navigate the job interview process.',
-    src: '/videos/laughing.mp4',
+    key: 'videos/SEN Demo 1.mp4',
+    src: '', // Will be populated with S3 URL
     thumbnail: '/videos thumbnails/job_interview.png',
   },
 ];
 
-/* Note: Originally this component used larger, higher-quality videos
-   but they were removed from git tracking due to GitHub's 100MB file size limit.
-   For deployment, replace these fallback videos with your full-quality videos
-   stored in a proper video hosting service like Cloudinary, AWS S3, or similar. */
-
 export default function Demos() {
-  const [activeVideo, setActiveVideo] = useState(videos[0]);
+  const [videos, setVideos] = useState(videoData);
+  const [activeVideo, setActiveVideo] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef(null);
-  const [videoError, setVideoError] = useState(false);
+  
+  // Load videos from S3 on component mount
+  useEffect(() => {
+    const loadVideosFromS3 = async () => {
+      setIsLoading(true);
+      try {
+        // Get signed URLs for each video
+        const updatedVideos = await Promise.all(
+          videoData.map(async (video) => {
+            try {
+              const signedUrl = await getVideoUrl(video.key);
+              return { ...video, src: signedUrl };
+            } catch (error) {
+              console.error(`Error getting URL for video ${video.key}:`, error);
+              return { ...video, error: true };
+            }
+          })
+        );
+        
+        // Filter out videos that failed to load
+        const validVideos = updatedVideos.filter(video => !video.error);
+        
+        if (validVideos.length > 0) {
+          setVideos(validVideos);
+          setActiveVideo(validVideos[0]);
+        } else {
+          console.error('No valid videos found in S3');
+        }
+      } catch (error) {
+        console.error('Error loading videos from S3:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadVideosFromS3();
+  }, []);
   
   // Handle video selection
   const handleVideoSelect = (video) => {
     setActiveVideo(video);
     setIsPlaying(false);
-    setVideoError(false);
     
     // Reset main video player
     if (videoRef.current) {
@@ -46,23 +82,32 @@ export default function Demos() {
   
   // Toggle play/pause
   const togglePlayPause = () => {
-    if (videoRef.current && !videoError) {
+    if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
       } else {
-        videoRef.current.play().catch(err => {
-          console.error("Error playing video:", err);
-          setVideoError(true);
-        });
+        // Try to play with error handling
+        const playPromise = videoRef.current.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // Playback started successfully
+            setIsPlaying(true);
+          }).catch(error => {
+            // Auto-play was prevented or other error
+            console.error("Video play error:", error);
+            
+            // Try again with muted (browsers often allow muted autoplay)
+            videoRef.current.muted = true;
+            videoRef.current.play().catch(e => {
+              console.error("Even muted playback failed:", e);
+            });
+          });
+        }
+        return; // Don't update isPlaying yet - wait for the promise
       }
       setIsPlaying(!isPlaying);
     }
-  };
-  
-  // Handle video error
-  const handleVideoError = () => {
-    setVideoError(true);
-    setIsPlaying(false);
   };
   
   // Update play state when video ends
@@ -83,6 +128,17 @@ export default function Demos() {
       }
     };
   }, []);
+
+  // If still loading videos or no active video yet
+  if (isLoading || !activeVideo) {
+    return (
+      <section className="py-20 bg-[#1e1e1e] text-white">
+        <div className="max-w-6xl mx-auto px-4 flex justify-center items-center" style={{ minHeight: '400px' }}>
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
+        </div>
+      </section>
+    );
+  }
   
   return (
     <section className="py-20 bg-[#1e1e1e] text-white">
@@ -96,22 +152,14 @@ export default function Demos() {
             ref={videoRef}
             src={activeVideo.src}
             className="w-full h-full object-cover"
-            onError={handleVideoError}
+            crossOrigin="anonymous"
+            preload="metadata"
+            muted
           />
-          
-          {/* Error Message if video fails to load */}
-          {videoError && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70">
-              <div className="text-center p-4">
-                <p className="text-white text-lg mb-2">Video could not be loaded</p>
-                <p className="text-gray-400 text-sm">Please check that the video file exists</p>
-              </div>
-            </div>
-          )}
           
           {/* Play Button Overlay */}
           <div 
-            className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-opacity ${isPlaying || videoError ? 'opacity-0' : 'opacity-100'}`}
+            className={`absolute inset-0 flex items-center justify-center cursor-pointer transition-opacity ${isPlaying ? 'opacity-0' : 'opacity-100'}`}
             onClick={togglePlayPause}
           >
             <div className="w-20 h-20 rounded-full bg-[#1e1e1e] bg-opacity-50 flex items-center justify-center border-2 border-secondary-meta-blue shadow-lg">

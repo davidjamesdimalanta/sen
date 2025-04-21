@@ -193,7 +193,7 @@ export function EfficiencyFeatureModal({ feature, onClose, isOpen }) {
               src={feature.image} 
               alt={feature.title}
               fill
-              className="object-cover"
+              className="object-contain object-center"
             />
           </div>
           

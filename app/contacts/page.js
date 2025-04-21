@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import { getVideoUrl } from '../utils/s3';
 
 export default function ContactsPage() {
   const [isMuted, setIsMuted] = useState(true);
@@ -10,6 +11,38 @@ export default function ContactsPage() {
   const [activeSection, setActiveSection] = useState(0);
   const textSections = useRef([]);
   const [isInFeatureSection, setIsInFeatureSection] = useState(false);
+  const [videoUrls, setVideoUrls] = useState({
+    influencer1: null,
+    influencer2: null,
+    influencer3: null
+  });
+  const [isLoading, setIsLoading] = useState(true);
+  
+  // Load videos from S3
+  useEffect(() => {
+    const loadVideos = async () => {
+      setIsLoading(true);
+      try {
+        const [influencer1Url, influencer2Url, influencer3Url] = await Promise.all([
+          getVideoUrl('videos/influencer1.mp4'),
+          getVideoUrl('videos/influencer2.mp4'),
+          getVideoUrl('videos/influencer3.mp4')
+        ]);
+        
+        setVideoUrls({
+          influencer1: influencer1Url,
+          influencer2: influencer2Url,
+          influencer3: influencer3Url
+        });
+      } catch (error) {
+        console.error('Error loading videos:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadVideos();
+  }, []);
   
   const toggleMute = (index) => {
     if (videoRefs.current[index]) {
@@ -36,7 +69,7 @@ export default function ContactsPage() {
       observer.observe(videoElement);
       return () => observer.disconnect();
     });
-  }, []);
+  }, [videoUrls]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,10 +104,10 @@ export default function ContactsPage() {
   return (
     <div className="w-full bg-[#1e1e1e] text-white overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-screen flex flex-col justify-between">
-        <div className="bg-gradient-to-b from-[#5728A5] to-[#1e1e1e] h-full flex flex-col justify-between">
+      <section className="relative h-auto flex flex-col justify-between">
+        <div className="bg-gradient-to-b from-[#5728A5] to-[#1e1e1e] h-auto flex flex-col justify-between">
           {/* Hero Headline */}
-          <div className="pt-8 md:pt-36 text-center">
+          <div className="pt-20 md:pt-36 text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-light max-w-4xl mx-auto px-4">
               <span className="bg-gradient-to-r from-[#d4f0fc] to-[#02a9f7] text-transparent bg-clip-text">SEN</span> <span className="font-medium">Contacts</span>. 
               <span className="block mt-2">Intelligence you can see.</span>
@@ -92,7 +125,7 @@ export default function ContactsPage() {
                 <Image 
                   src="/graphics/contact-lens.png"
                   alt="SEN Contacts in use"
-                  width={800}
+                  width={600}
                   height={600}
                   className="w-full h-auto object-fill"
                   priority
@@ -182,25 +215,31 @@ export default function ContactsPage() {
                   )}
                 </button>
                 
-                <video 
-                  ref={el => videoRefs.current[0] = el}
-                  muted 
-                  loop 
-                  playsInline
-                  className="w-full h-full object-cover rounded-xl cursor-pointer"
-                  poster="/graphics/contact-cross-section.png"
-                  onClick={() => toggleMute(0)}
-                >
-                  <source src="/videos/influencer1.mp4" type="video/mp4" />
-                  {/* Fallback image if video doesn't load */}
-                  <Image
-                    src="/graphics/contact-cross-section.png"
-                    alt="SEN Contact Lens Technology"
-                    width={600}
-                    height={600}
-                    className="w-full h-auto"
-                  />
-                </video>
+                {isLoading ? (
+                  <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
+                  </div>
+                ) : (
+                  <video 
+                    ref={el => videoRefs.current[0] = el}
+                    muted 
+                    loop 
+                    playsInline
+                    className="w-full h-full object-cover rounded-xl cursor-pointer"
+                    poster="/graphics/contact-cross-section.png"
+                    onClick={() => toggleMute(0)}
+                  >
+                    <source src={videoUrls.influencer1} type="video/mp4" />
+                    {/* Fallback image if video doesn't load */}
+                    <Image
+                      src="/graphics/contact-cross-section.png"
+                      alt="SEN Contact Lens Technology"
+                      width={600}
+                      height={600}
+                      className="w-full h-auto"
+                    />
+                  </video>
+                )}
               </div>
             </div>
           </div>
@@ -278,25 +317,31 @@ export default function ContactsPage() {
                   )}
                 </button>
                 
-                <video 
-                  ref={el => videoRefs.current[1] = el}
-                  muted 
-                  loop 
-                  playsInline
-                  className="w-full h-full object-cover rounded-xl cursor-pointer"
-                  poster="/graphics/contact-cross-section.png"
-                  onClick={() => toggleMute(1)}
-                >
-                  <source src="/videos/influencer2.mp4" type="video/mp4" />
-                  {/* Fallback image if video doesn't load */}
-                  <Image
-                    src="/graphics/contact-cross-section.png"
-                    alt="SEN Contact Lens Technology"
-                    width={600}
-                    height={600}
-                    className="w-full h-auto"
-                  />
-                </video>
+                {isLoading ? (
+                  <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
+                  </div>
+                ) : (
+                  <video 
+                    ref={el => videoRefs.current[1] = el}
+                    muted 
+                    loop 
+                    playsInline
+                    className="w-full h-full object-cover rounded-xl cursor-pointer"
+                    poster="/graphics/contact-cross-section.png"
+                    onClick={() => toggleMute(1)}
+                  >
+                    <source src={videoUrls.influencer2} type="video/mp4" />
+                    {/* Fallback image if video doesn't load */}
+                    <Image
+                      src="/graphics/contact-cross-section.png"
+                      alt="SEN Contact Lens Technology"
+                      width={600}
+                      height={600}
+                      className="w-full h-auto"
+                    />
+                  </video>
+                )}
               </div>
             </div>
           </div>
@@ -374,25 +419,31 @@ export default function ContactsPage() {
                   )}
                 </button>
                 
-                <video 
-                  ref={el => videoRefs.current[2] = el}
-                  muted 
-                  loop 
-                  playsInline
-                  className="w-full h-full object-cover rounded-xl cursor-pointer"
-                  poster="/graphics/contact-cross-section.png"
-                  onClick={() => toggleMute(2)}
-                >
-                  <source src="/videos/influencer3.mp4" type="video/mp4" />
-                  {/* Fallback image if video doesn't load */}
-                  <Image
-                    src="/graphics/contact-cross-section.png"
-                    alt="SEN Contact Lens Technology"
-                    width={600}
-                    height={600}
-                    className="w-full h-auto"
-                  />
-                </video>
+                {isLoading ? (
+                  <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-secondary-meta-blue"></div>
+                  </div>
+                ) : (
+                  <video 
+                    ref={el => videoRefs.current[2] = el}
+                    muted 
+                    loop 
+                    playsInline
+                    className="w-full h-full object-cover rounded-xl cursor-pointer"
+                    poster="/graphics/contact-cross-section.png"
+                    onClick={() => toggleMute(2)}
+                  >
+                    <source src={videoUrls.influencer3} type="video/mp4" />
+                    {/* Fallback image if video doesn't load */}
+                    <Image
+                      src="/graphics/contact-cross-section.png"
+                      alt="SEN Contact Lens Technology"
+                      width={600}
+                      height={600}
+                      className="w-full h-auto"
+                    />
+                  </video>
+                )}
               </div>
             </div>
           </div>
