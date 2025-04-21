@@ -48,7 +48,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-center relative">
             <div className="w-full min-h-[500px] flex flex-col justify-center items-center md:items-start text-center md:text-left md:pl-8">
               <Image 
-                src="/senAI branding/senAI-long.svg" 
+                src="/public/senAI branding/senAI-long.svg" 
                 alt="SenAI Logo" 
                 width={240} 
                 height={120} 

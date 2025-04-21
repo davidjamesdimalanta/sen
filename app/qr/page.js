@@ -4,7 +4,7 @@ export default function QRPage() {
   return (
     <div className="bg-gradient-to-b from-[#5728A5] to-[#1e1e1e] text-white min-h-screen py-16 flex flex-col items-center h-auto">
       <Image 
-        src="/graphics/qrcode.png" 
+        src="/public/graphics/qrcode.png" 
         alt="QR Code" 
         width={500} 
         height={500} 
